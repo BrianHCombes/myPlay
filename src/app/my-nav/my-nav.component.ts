@@ -2,9 +2,10 @@
 
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map, mergeMap } from 'rxjs/operators';
 
 import { MyNavService } from './../my-nav.service';
 
@@ -21,10 +22,34 @@ export class MyNavComponent {
       map(result => result.matches)
     );
 
+  navigationEnd: Observable<NavigationEnd>;
+//  activatedRoute: ActivatedRoute;
+
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private myNavService: MyNavService
-    ) {}
+    private myNavService: MyNavService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private pageTitleService: MyNavService
+    ) {
+      // Create an Observable NavigationEnd event
+      this.navigationEnd = this.router.events.pipe(
+        filter((navigationEndEvent) => navigationEndEvent instanceof NavigationEnd),
+        map(() => this.activatedRoute),
+        map((route) => {
+          while (route.firstChild) route = route.firstChild;
+          return route;
+        }),
+        filter((route) => route.outlet === 'primary'),
+        mergeMap((route) => route.data)
+      ) as Observable<NavigationEnd>;
+    }
+
+    ngOnInit() {
+      this.navigationEnd.subscribe(evt => console.log('Navigation Ended!'));
+      this.navigationEnd.subscribe(navigationEndEvent => this.pageTitleService.setPageTitle(navigationEndEvent['pageTitle']))
+      this.navigationEnd.subscribe(evt => console.log(this.pageTitleService));
+    }
 
     pageTitle = this.myNavService.getPageTitle();
 

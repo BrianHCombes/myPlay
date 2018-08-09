@@ -8,11 +8,6 @@
     [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">
       <mat-toolbar-row>Menu</mat-toolbar-row>
-  <!--
-    <mat-toolbar-row>{{pageTitle}}</mat-toolbar-row>
-    <mat-toolbar-row>menuTitle</mat-toolbar-row>
-      <mat-toolbar-row>{{data.menuTitle()}}</mat-toolbar-row>
-    -->
     </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/first-page">First Page</a>
@@ -42,7 +37,7 @@
           </a>
         </span>
 
-        <span> {{pageTitle}} </span>
+        <span>{{pageTitle}}</span>
 
         <span class="header-fill-remaining-space"> </span>
 
@@ -52,7 +47,6 @@
           <button mat-button aria-label="register">register</button>
         </span>
       </mat-toolbar-row>
-
 
     </mat-toolbar>
     <!-- Add Content Here -->
