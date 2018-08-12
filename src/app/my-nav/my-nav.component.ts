@@ -47,11 +47,9 @@ export class MyNavComponent {
 
     ngOnInit() {
       this.navigationEnd.subscribe(evt => console.log('Navigation Ended!'));
-      this.navigationEnd.subscribe(navigationEndEvent => this.pageTitleService.setPageTitle(navigationEndEvent['pageTitle']))
-      this.navigationEnd.subscribe(evt => console.log(this.pageTitleService));
+      this.navigationEnd.subscribe(navigationEndEvent => this.pageTitleService.setPageTitle(navigationEndEvent['pageTitle']));
+      this.navigationEnd.subscribe(evt => console.log("In MyNavComponent ngOnInit pageTitle is: " + this.myNavService.getPageTitle()));
     }
 
     pageTitle = this.myNavService.getPageTitle();
-
-//   pageTitle = "Temp Page Title"
   }
