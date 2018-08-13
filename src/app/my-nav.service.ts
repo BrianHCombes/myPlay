@@ -13,7 +13,7 @@ export class MyNavService {
 
 
   setPageTitle(newPageTitle: string) {
-    this.pageTitle = newPageTitle;
+    document.getElementById('spanPageTitle').innerHTML = this.pageTitle = newPageTitle;
   }
 
   getPageTitle() {

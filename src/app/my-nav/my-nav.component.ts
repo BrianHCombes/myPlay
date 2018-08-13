@@ -23,14 +23,12 @@ export class MyNavComponent {
     );
 
   navigationEnd: Observable<NavigationEnd>;
-//  activatedRoute: ActivatedRoute;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private myNavService: MyNavService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private pageTitleService: MyNavService
+    private activatedRoute: ActivatedRoute
     ) {
       // Create an Observable NavigationEnd event
       this.navigationEnd = this.router.events.pipe(
@@ -46,10 +44,7 @@ export class MyNavComponent {
     }
 
     ngOnInit() {
-      this.navigationEnd.subscribe(evt => console.log('Navigation Ended!'));
-      this.navigationEnd.subscribe(navigationEndEvent => this.pageTitleService.setPageTitle(navigationEndEvent['pageTitle']));
-      this.navigationEnd.subscribe(evt => console.log("In MyNavComponent ngOnInit pageTitle is: " + this.myNavService.getPageTitle()));
+      this.navigationEnd.subscribe(navigationEndEvent => this.myNavService.setPageTitle(navigationEndEvent['pageTitle']));
     }
 
-    pageTitle = this.myNavService.getPageTitle();
   }
