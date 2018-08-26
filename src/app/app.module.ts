@@ -3,7 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule } from '@angular/material';
+import { MatButtonModule,
+         MatCardModule,
+         MatExpansionModule,
+         MatIconModule,
+         MatListModule,
+         MatMenuModule,
+         MatSidenavModule,
+         MatToolbarModule
+         } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,12 +29,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule,
     MatButtonModule,
-    MatSidenavModule,
+    MatCardModule,
+    MatExpansionModule,
     MatIconModule,
     MatListModule,
-    MatCardModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatToolbarModule,
     AppRoutingModule
   ],
   declarations: [

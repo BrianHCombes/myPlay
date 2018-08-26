@@ -10,10 +10,64 @@
       <mat-toolbar-row>Menu</mat-toolbar-row>
     </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/first-page">First Page</a>
-      <a mat-list-item routerLink="/second-page">Second Page</a>
-      <a mat-list-item routerLink="/third-page">Third Page</a>
+      <!-- simple example with a single button routed to a card -->
+      <a mat-list-item routerLink="/first-page">Card Example</a>
+
+      <!-- nested menu example with a single button routed to a card -->
+      <a mat-list-item routerLink="/second-page" [matMenuTriggerFor]="secondPage">Nested Menu</a>
+      <mat-menu #secondPage="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="nestedItem1">Nested Topic 1</button>
+        <button mat-menu-item [matMenuTriggerFor]="nestedItem2">Nested Topic 2</button>
+      </mat-menu>
+      <mat-menu #nestedItem1="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+      <mat-menu #nestedItem2="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+        <button mat-menu-item>Item 3</button>
+      </mat-menu>
+
+      <!-- Third Example-->
+        <a mat-list-item
+          cdkaccordionitem="" expanded="true"
+          >Expansion Menu
+          <mat-icon role="img">keyboard_arrow_up</mat-icon>
+        </a>
+
+          <button mat-menu-item
+            cdkaccordionitem="" expanded="true"
+            >List Topic 1
+            <mat-icon role="img">keyboard_arrow_up</mat-icon>
+          </button>
+          <ul id=list-menu-example style="display:block;">
+            <li class="submenu" style="">
+              <a routerLink="/third-page">Item 1</a>
+            </li>
+            <li class="submenu" style="">
+              <a>Item 2</a>
+            </li>
+          </ul>
+
+          <button mat-menu-item
+            cdkaccordionitem="" expanded="true"
+            >List Topic 2
+            <mat-icon role="img">keyboard_arrow_up</mat-icon>
+          </button>
+          <ul id=list-menu-example style="display:block;">
+            <li style="">
+              <a>Item 1</a>
+            </li>
+            <li style="">
+              <a>Item 2</a>
+            </li>
+            <li style="">
+              <a>Item 3</a>
+            </li>
+          </ul>
     </mat-nav-list>
+
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
@@ -49,6 +103,7 @@
       </mat-toolbar-row>
 
     </mat-toolbar>
+
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>

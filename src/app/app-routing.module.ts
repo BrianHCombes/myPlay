@@ -10,8 +10,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 //for each component page add the path, component, and pageTitle
 const appRoutes: Routes = [
-  { path: 'first-page', component: FirstPageComponent, data: {pageTitle: "1st Page"} },
-  { path: 'second-page', component: SecondPageComponent, data: {pageTitle: '2nd Page'}  },
+  { path: 'first-page', component: FirstPageComponent, data: {pageTitle: "Card Example"} },
+  { path: 'second-page', component: SecondPageComponent, data: {pageTitle: 'Nested Menu Example'}  },
   { path: 'third-page', component: ThirdPageComponent, data: {pageTitle: '3rd Page'}  },
 
   // add new pages for the router above this comment line.
