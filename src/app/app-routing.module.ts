@@ -11,8 +11,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 //for each component page add the path, component, and pageTitle
 const appRoutes: Routes = [
   { path: 'first-page', component: FirstPageComponent, data: {pageTitle: "Card Example"} },
-  { path: 'second-page', component: SecondPageComponent, data: {pageTitle: 'Nested Menu Example'}  },
-  { path: 'third-page', component: ThirdPageComponent, data: {pageTitle: '3rd Page'}  },
+  { path: 'second-page', component: SecondPageComponent, data: {pageTitle: 'Nested Menu, Child of Child Example'}  },
+  { path: 'third-page', component: ThirdPageComponent, data: {pageTitle: 'Expansion Menu, Child Example'}  },
 
   // add new pages for the router above this comment line.
   // the empty path should always list as 2nd to last path.
